@@ -52,18 +52,28 @@ function getHumanChoice() {
   }
 }
 
-function main() {
+function playGame(roundsNumber = 5) {
   let humanScore = 0;
   let computerScore = 0;
-  
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
-  
-  const winner = playRound(humanSelection, computerSelection);
-  if (winner === 'computer') computerScore++;
-  else if (winner === 'human') humanScore++;
-  console.log('human: ' + humanScore);
-  console.log('computer: ' + computerScore);
+
+  for (;roundsNumber > 0; roundsNumber--) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    const roundWinner = playRound(humanSelection, computerSelection);
+    if (roundWinner === 'computer') computerScore++;
+    else if (roundWinner === 'human') humanScore++;
+  }
+
+  if (humanScore > computerScore) {
+    console.log('You won this game!');
+  } else if (humanScore < computerScore) {
+    console.log('You lose this game!');
+  } else {
+    console.log('It\'s Draw!');
+  }
+  console.log(`human: ${humanScore}`);
+  console.log(`computer: ${computerScore}`);
 }
 
-main();
+playGame();
