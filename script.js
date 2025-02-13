@@ -6,3 +6,14 @@ function getComputerChoice() {
     case 2: return 'scissors';
   }
 }
+
+function getHumanChoice() {
+  while (true) {
+    const msg = `Enter one "Rock", "Paper" or "Scissors"`;
+    let choice = prompt(msg)?.toLowerCase();
+    
+    if (choice === 'rock' || choice === 'paper' || choice === 'scissors') {
+      return choice;
+    }
+  }
+}
