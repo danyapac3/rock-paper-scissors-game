@@ -76,4 +76,4 @@ function playGame(roundsNumber = 5) {
   console.log(`computer: ${computerScore}`);
 }
 
-playGame();
+// playGame();

@@ -3,12 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
   <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <h1>Rock Paper Scissors</h1>
-  <p>Open dev console</p>
-
+  <h1 class="title">Rock Paper Scissors</h1>
+  <main class="game">
+    <div class="player-section">
+      <div class="info">
+        <div class="scores">scores: 0</div>
+        <div class="player-name">Player</div>
+      </div>
+      <ul class="options">
+        <li id="rock"><img src="./images/rock.png" alt="rock"></li>
+        <li id="paper"><img src="./images/paper.png" alt="paper"></li>
+        <li id="scissors"><img src="./images/scissors.png" alt="scissors"></li>
+      </ul>
+    </div>
+    <div class="computer-section">
+      <div class="info">
+        <div class="scores">scores: 0</div>
+        <div class="player-name">Computer</div>
+      </div>
+      <ul class="options">
+        <li id="rock"><img src="./images/rock.png" alt="rock"></li>
+        <li id="paper"><img src="./images/paper.png" alt="paper"></li>
+        <li id="scissors"><img src="./images/scissors.png" alt="scissors"></li>
+      </ul>
+    </div>
+  </main>
   <script src="./script.js"></script>
 </body>
 </html>
