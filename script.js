@@ -1,3 +1,6 @@
+/**
+ * @return {string} "human", "computer" or "draw";
+ */
 function getWinner(human, computer) {
   let winner = 'human';
   switch(human) {
@@ -30,26 +33,40 @@ function getComputerChoice() {
   }
 }
 
+/**
+ * @param {string} option - option you want to hightlight
+ * @param {NodeList} elements
+ */
+function hightlightOption(option, elements) {
+  elements.forEach((element) => {
+    if (element.dataset.weapon === option) element.classList.add('highlighted');
+    else element.classList.remove('highlighted');
+  });
+}
+
 const possibleSeletions = ['rock', 'paper', 'scissors'];
 
 let humanScores = 0;
 let computerScores = 0;
 
-const humanOptions = document.querySelector(".human-section .options");
+const humanOptions = document.querySelectorAll(".human-section .option");
 const humanScoreBoard = document.querySelector(".human-section .scores");
+const computerOptions = document.querySelectorAll(".computer-section .option");
 const computerScoreBoard = document.querySelector(".computer-section .scores");
 
-humanOptions.addEventListener('click', (e) => {
-  const humanSelection = e.target.parentElement.id;
-  if (!possibleSeletions.includes(humanSelection)) {
-    return;
-  }
-  const computerSelection = getComputerChoice();
-  const winner = getWinner(humanSelection, computerSelection);
-  if (winner === 'human') humanScores++;
-  else if (winner === 'computer') computerScores++;
+humanOptions.forEach((option) => {
+  option.addEventListener('click', ({currentTarget}) => {
+    const humanSelection = currentTarget.dataset.weapon;
+    const computerSelection = getComputerChoice();
+    hightlightOption(humanSelection, humanOptions);
+    hightlightOption(computerSelection, computerOptions);
+    
+    const winner = getWinner(humanSelection, computerSelection);
+    if (winner === 'human') humanScores++;
+    else if (winner === 'computer') computerScores++;
 
-  humanScoreBoard.textContent = `Scores: ${humanScores}`;
-  computerScoreBoard.textContent = `Scores: ${computerScores}`;
-  console.log(`${winner} won!`)
+    humanScoreBoard.textContent = `Scores: ${humanScores}`;
+    computerScoreBoard.textContent = `Scores: ${computerScores}`;
+    console.log(`${winner} won!`);
+  });
 });

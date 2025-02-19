@@ -44,10 +44,12 @@ h1 {
   border-radius: 16px;
 }
 
+.computer-section {
+  --highlight-color: #ae6969;
+}
 
-.options {
-  display: flex;
-  gap: 8px;
+.human-section {
+  --highlight-color: #69ae6f;  
 }
 
 .info {
@@ -56,17 +58,30 @@ h1 {
   margin-bottom: 16px;
 }
 
-.options img {
+.options {
+  display: flex;
+  gap: 8px;
+}
+
+.option img {
   width: 100px;
   height: 100px;
 }
 
-.options li {
+.option {
   background-color: #5a5645;
   border-radius: 16px;
   border: solid 5px #B9B28A;
 }
 
-.computer-section .options li{
+.computer-section .option{
   filter: brightness(0.75);
+}
+
+.highlighted {
+  border: solid 5px var(--highlight-color);
+}
+
+.computer-section .highlighted{
+  filter: brightness(1);
 }
