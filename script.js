@@ -1,5 +1,5 @@
 /**
- * @return {string} "human", "computer" or "draw";
+ * @return {string} 'human', 'computer' or 'draw';
  */
 function getWinner(human, computer) {
   let winner = 'human';
@@ -44,18 +44,29 @@ function hightlightOption(option, elements) {
   });
 }
 
+function endGame() {
+  console.log('You won');
+}
+
 const possibleSeletions = ['rock', 'paper', 'scissors'];
 
 let humanScores = 0;
 let computerScores = 0;
+let roundNumber = 1;
 
-const humanOptions = document.querySelectorAll(".human-section .option");
-const humanScoreBoard = document.querySelector(".human-section .scores");
-const computerOptions = document.querySelectorAll(".computer-section .option");
-const computerScoreBoard = document.querySelector(".computer-section .scores");
+const humanOptions = document.querySelectorAll('.human-section .option');
+const humanScoreBoard = document.querySelector('.human-section .scores');
+const computerOptions = document.querySelectorAll('.computer-section .option');
+const computerScoreBoard = document.querySelector('.computer-section .scores');
+const roundBoard = document.querySelector('.round-info');
 
 humanOptions.forEach((option) => {
   option.addEventListener('click', ({currentTarget}) => {
+    if (roundNumber === 5) {
+      endGame();
+      return;
+    }
+
     const humanSelection = currentTarget.dataset.weapon;
     const computerSelection = getComputerChoice();
     hightlightOption(humanSelection, humanOptions);
@@ -68,5 +79,8 @@ humanOptions.forEach((option) => {
     humanScoreBoard.textContent = `Scores: ${humanScores}`;
     computerScoreBoard.textContent = `Scores: ${computerScores}`;
     console.log(`${winner} won!`);
+
+    roundNumber++;
+    roundBoard.textContent = `Round ${roundNumber} of 5`;
   });
 });

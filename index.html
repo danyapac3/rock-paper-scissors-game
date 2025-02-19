@@ -9,27 +9,30 @@
 <body>
   <h1 class="title">Rock Paper Scissors</h1>
   <main class="game">
-    <div class="human-section">
-      <div class="info">
-        <div class="scores">scores: 0</div>
-        <div class="player-name">Player</div>
+    <div class="round-info">Round 1 of 5</div>
+    <div class="selections-container">
+      <div class="human-section">
+        <div class="info">
+          <div class="scores">scores: 0</div>
+          <div class="player-name">Player</div>
+        </div>
+        <ul class="options">
+          <li data-weapon="rock" class="option"><img src="./images/rock.png" alt="rock"></li>
+          <li data-weapon="paper" class="option"><img src="./images/paper.png" alt="paper"></li>
+          <li data-weapon="scissors" class="option"><img src="./images/scissors.png" alt="scissors"></li>
+        </ul>
       </div>
-      <ul class="options">
-        <li data-weapon="rock" class="option"><img src="./images/rock.png" alt="rock"></li>
-        <li data-weapon="paper" class="option"><img src="./images/paper.png" alt="paper"></li>
-        <li data-weapon="scissors" class="option"><img src="./images/scissors.png" alt="scissors"></li>
-      </ul>
-    </div>
-    <div class="computer-section">
-      <div class="info">
-        <div class="scores">scores: 0</div>
-        <div class="player-name">Computer</div>
+      <div class="computer-section">
+        <div class="info">
+          <div class="scores">scores: 0</div>
+          <div class="player-name">Computer</div>
+        </div>
+        <ul class="options">
+          <li data-weapon="rock" class="option"><img src="./images/rock.png" alt="rock"></li>
+          <li data-weapon="paper" class="option"><img src="./images/paper.png" alt="paper"></li>
+          <li data-weapon="scissors" class="option"><img src="./images/scissors.png" alt="scissors"></li>
+        </ul>
       </div>
-      <ul class="options">
-        <li data-weapon="rock" class="option"><img src="./images/rock.png" alt="rock"></li>
-        <li data-weapon="paper" class="option"><img src="./images/paper.png" alt="paper"></li>
-        <li data-weapon="scissors" class="option"><img src="./images/scissors.png" alt="scissors"></li>
-      </ul>
     </div>
   </main>
   <script src="./script.js"></script>
