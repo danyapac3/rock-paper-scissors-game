@@ -35,15 +35,15 @@ const possibleSeletions = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
 let computerScore = 0;
 
-let playerOptions = document.querySelector(".player-section .options");
-playerOptions.addEventListener('click', (e) => {
-  const playerSelection = e.target.parentElement.id;
-  if (!possibleSeletions.includes(playerSelection)) {
+let humanOptions = document.querySelector(".human-section .options");
+humanOptions.addEventListener('click', (e) => {
+  const humanSelection = e.target.parentElement.id;
+  if (!possibleSeletions.includes(humanSelection)) {
     return;
   }
   const computerSelection = getComputerChoice();
-  const winner = getWinner(playerSelection, computerSelection);
+  const winner = getWinner(humanSelection, computerSelection);
   if (winner === 'human') humanScore++;
   else if (winner === 'computer') computerScore++; 
   console.log(winner);
-})
+});
