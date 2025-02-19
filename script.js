@@ -1,4 +1,4 @@
-function playRound(human, computer) {
+function getWinner(human, computer) {
   let winner = 'human';
   switch(human) {
     case 'rock':
@@ -17,7 +17,7 @@ function playRound(human, computer) {
       else if (computer === 'scissors') winner = 'draw';
       break;
   }
-  
+
   return winner;
 }
 
@@ -30,11 +30,20 @@ function getComputerChoice() {
   }
 }
 
-let playerOptions = document.querySelector('.player-section .options');
+const possibleSeletions = ['rock', 'paper', 'scissors'];
 
 let humanScore = 0;
 let computerScore = 0;
 
-playerSelection = null;
-
-// playGame();
+let playerOptions = document.querySelector(".player-section .options");
+playerOptions.addEventListener('click', (e) => {
+  const playerSelection = e.target.parentElement.id;
+  if (!possibleSeletions.includes(playerSelection)) {
+    return;
+  }
+  const computerSelection = getComputerChoice();
+  const winner = getWinner(playerSelection, computerSelection);
+  if (winner === 'human') humanScore++;
+  else if (winner === 'computer') computerScore++; 
+  console.log(winner);
+})
