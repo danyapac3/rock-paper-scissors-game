@@ -44,8 +44,23 @@ function hightlightOption(option, elements) {
   });
 }
 
-function endGame() {
-  console.log('You won');
+function endGame(msg) {
+  popupText.textContent = msg; 
+  popup.classList.remove('invisible');
+}
+
+function initGame() {
+  humanScores = 0;
+  computerScores = 0;
+  roundNumber = 1;
+  
+  humanScoreBoard.textContent = `Scores: ${humanScores}`;
+  computerScoreBoard.textContent = `Scores: ${computerScores}`;
+  roundBoard.textContent = `Round ${roundNumber} of 5`;
+
+  [...humanOptions, ...computerOptions].forEach((option) => {
+    option.classList.remove('highlighted');
+  });
 }
 
 const possibleSeletions = ['rock', 'paper', 'scissors'];
@@ -59,11 +74,23 @@ const humanScoreBoard = document.querySelector('.human-section .scores');
 const computerOptions = document.querySelectorAll('.computer-section .option');
 const computerScoreBoard = document.querySelector('.computer-section .scores');
 const roundBoard = document.querySelector('.round-info');
+const popup = document.querySelector('.popup');
+const popupText = document.querySelector('.popup-text')
+const popupButton = document.querySelector('.popup-button');
+
+popupButton.addEventListener('click', (e) => {
+  popup.classList.add('invisible');
+  initGame()
+});
 
 humanOptions.forEach((option) => {
   option.addEventListener('click', ({currentTarget}) => {
     if (roundNumber === 5) {
-      endGame();
+      const msg = ( 
+        (humanScores > computerScores) ? 'You won!' :
+        (humanScores < computerScores) ? 'You lose!' :
+        'Draw!') + ' Would you like to play again?';
+      endGame(msg);
       return;
     }
 
@@ -78,7 +105,6 @@ humanOptions.forEach((option) => {
 
     humanScoreBoard.textContent = `Scores: ${humanScores}`;
     computerScoreBoard.textContent = `Scores: ${computerScores}`;
-    console.log(`${winner} won!`);
 
     roundNumber++;
     roundBoard.textContent = `Round ${roundNumber} of 5`;
