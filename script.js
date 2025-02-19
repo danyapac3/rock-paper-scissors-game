@@ -32,10 +32,13 @@ function getComputerChoice() {
 
 const possibleSeletions = ['rock', 'paper', 'scissors'];
 
-let humanScore = 0;
-let computerScore = 0;
+let humanScores = 0;
+let computerScores = 0;
 
-let humanOptions = document.querySelector(".human-section .options");
+const humanOptions = document.querySelector(".human-section .options");
+const humanScoreBoard = document.querySelector(".human-section .scores");
+const computerScoreBoard = document.querySelector(".computer-section .scores");
+
 humanOptions.addEventListener('click', (e) => {
   const humanSelection = e.target.parentElement.id;
   if (!possibleSeletions.includes(humanSelection)) {
@@ -43,7 +46,10 @@ humanOptions.addEventListener('click', (e) => {
   }
   const computerSelection = getComputerChoice();
   const winner = getWinner(humanSelection, computerSelection);
-  if (winner === 'human') humanScore++;
-  else if (winner === 'computer') computerScore++; 
-  console.log(winner);
+  if (winner === 'human') humanScores++;
+  else if (winner === 'computer') computerScores++;
+
+  humanScoreBoard.textContent = `Scores: ${humanScores}`;
+  computerScoreBoard.textContent = `Scores: ${computerScores}`;
+  console.log(`${winner} won!`)
 });
